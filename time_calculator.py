@@ -5,6 +5,7 @@ opt = False
 if opt == True:
     optional_day = input("Day: ")
 
+
 def add_time(user_start,user_end):
     #start time.
     start_hour = int(user_start.split(':')[0])
@@ -32,6 +33,16 @@ def add_time(user_start,user_end):
 
     #get hours for the day.
     hours = ((start_hour + end_hour)%24)+count
+    #indicate where the pm and am must represent in the time.
+    if("pm" in user_start):
+        hours >= 12
+    else:
+        hours <= 12
+    if("pm" in user_end):
+        hours >= 12
+    else:
+            hours <= 12
+
     if(hours < 12) and (minutes < 0):
         print(f"({hours}:{minutes}am) ({day} days later)")
     else:
@@ -61,7 +72,6 @@ def add_time(user_start,user_end):
             case 23:
                 print(f"({x-12}:{minutes}pm) ({day} days later)")
             case 24:
-                print(f"({x-12}:{minutes}pm) ({day} days later)")
-            
+                print(f"({x-12}:{minutes}pm) ({day} days later)")              
 
 add_time(user_start,user_end)
